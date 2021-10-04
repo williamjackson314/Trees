@@ -1,51 +1,53 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  1 20:36:48 2021
+def set_root(tree, data) :
+    if tree[0] is None :
+        tree[0] = data
+    else :
+        return 0
 
-@author: wtjac
-"""
-class Node :
-    
-    def __init__(self, data):
-        self.low = None
-        self.high = None
-        self.data = data
-        
-    def __str__(self) :
-        return str(self.low.__str__()) +  str(self.data) + str(self.high.__str__())
-        
-    def insert(self, new_data) :
-        if self.data :
-            if new_data < self.data :
-                if self.low is None :
-                    self.low = Node(new_data)
-                else :
-                    self.low.insert(new_data)
-            elif new_data >= self.data :
-                if self.high is None :
-                    self.high = Node(new_data)
-                else :
-                    self.high.insert(new_data)
-            else :
-                self.data = new_data
-    
-    def search(self, target) :
-    
-        if target == self.data or self.data is None:
-            return self.data
-        elif target < self.data :
-            self.low.search(target)
-        else :
-            self.high.search(target)
-        
-def main():
-
-    Binary_Tree = Node(10)
-    Binary_Tree.insert(11)
-    Binary_Tree.insert(12)
-    Binary_Tree.insert(3)
-    root = Binary_Tree.search(12)
-    print(str(root))
+def insert(tree, data) :
     return 0
+
+def search(tree, target):
+    i = 0
+    while i < len(tree) :
+        if target == tree[i] :
+            return i
+        elif target < tree[i] :
+            i = (2 * i) + 1
+        else : # target > trees[i]
+            i = (2 * i) + 2
     
+    return None
+
+def remove(tree, data) :
+    i = search(tree, data)
+    '''
+    while i < len(tree) - 1 :
+        tree[i] = tree[i + 1]
+        i += 1
+    tree.pop()
+    '''
+    print(tree)
+
+def maximum(tree) :
+    i = 0
+    while i < len(tree) and tree[i] is not None :
+        j = i
+        i = (2 * i) + 2
+    
+    return j
+
+def minimum(tree) :
+    i = 0
+    while i < len(tree) and tree[i] is not None:
+        j = i
+        i = (2 * i) + 1
+    
+    return j
+
+def main() :
+    tree = [13, None, 16, None, None, 14, 18]
+    print(str(minimum(tree)))
+    return 0
+
 main()
