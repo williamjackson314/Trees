@@ -60,15 +60,35 @@ def minimum(tree) :
         i = (2 * i) + 1
 
         if i >= len(tree) :
-            add_level(tree)        
+            add_level(tree)
 
     return tree[j]
 
+def inorder(tree, node_index) :
+    if tree[node_index] is not None :
+        inorder(tree, node_index * 2 + 1)
+        print(tree[node_index])
+        inorder(tree, node_index * 2 + 2)
+
+def preorder(tree, node_index) :
+    if tree[node_index] is not None :
+        print(tree[node_index])
+        preorder(tree, node_index * 2 + 1)
+        preorder(tree, node_index * 2 + 2)
+
+def postorder(tree, node_index) :
+    if tree[node_index] is not None :
+        postorder(tree, node_index * 2 + 1)
+        postorder(tree, node_index * 2 + 2)
+        print(tree[node_index])
+
+
+
 def main() :
     data = read_file("test1.csv")
-    tree = [None]
-    for num in data[:] :
-        insert(tree, num)
+    tree = [50,25,75,10,40,60,90, None, None, None, None, None, None, None, None]
+    # for num in data[:] :
+    #     insert(tree, num)
     return 0
 
 main()
