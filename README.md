@@ -34,6 +34,7 @@ maximum :
 - Does this by iteratively calling the right() support function until a 'None' valued child is found.
 
 **Traversals** :
+
 inorder :
 - Prints out nodes in left, middle, right order.
 
@@ -59,6 +60,7 @@ build_max_heap :
 - Iteratively calls max_heapify to rearrange list to follow the Max Heap property
 
 **Main**
+
 main :
 - Read in csv data.
 - Read in data from the csv file requested by the user
